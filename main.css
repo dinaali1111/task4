@@ -1,24 +1,31 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
 .slider-container {
-    max-width: 500px;
+    max-width: 800px;
+    width: 90%;
     margin: 50px auto;
-    padding: 10px;
-    background-color: #fff8dc;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     position: relative;
 }
 
 h2 {
-    margin: 10px 0;
+    margin: 15px 0 25px 0;
     font-weight: bold;
+    font-size: 2.8rem;
+    color: #333;
 }
 
 .slider {
@@ -28,59 +35,162 @@ h2 {
     justify-content: center;
     overflow: hidden;
     width: 100%;
+    height: 520px; /* make slider taller so image fills container */
+    max-height: 70vh;
 }
 
 .slides {
     display: flex;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.5s ease-in-out;
+    height: 100%; /* so children (images) can use height:100% */
+    align-items: center;
 }
 
 .slider img {
     width: 100%;
-    height: auto;
-    border-radius: 10px;
-    flex-shrink: 0; }
+    height: 100%; /* fill the container height */
+    object-fit: cover;
+    border-radius: 12px;
+    flex-shrink: 0;
+    transition: transform 0.4s ease;
+}
+
+.slider img:hover {
+    transform: scale(1.05);
+}
+
+.slide-item {
+    min-width: 100%;
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 .nav-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: yellow;
+    background-color: rgba(255, 255, 255, 0.9);
     border: none;
-    font-size: 24px;
-    font-weight: bold;
-    color: #fff;
+    font-size: 1.2rem; /* smaller icon size */
+    color: #333;
+    width: 38px; /* smaller buttons */
+    height: 38px;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+    transition: background-color 0.2s, transform 0.2s;
     z-index: 1000;
 }
 
+.nav-btn:hover {
+    background-color: #fff;
+    transform: translateY(-50%) scale(1.1);
+}
+
 #prev {
-    left: 10px;
+    left: 10px; /* bring closer and smaller */
 }
 
 #next {
-    right: 10px;
+    right: 10px; /* bring closer and smaller */
+}
+
+/* Responsive tweaks for small screens */
+@media (max-width: 600px) {
+    .slider {
+        height: 260px;
+        max-height: 60vh;
+    }
+    .nav-btn {
+        width: 34px;
+        height: 34px;
+        font-size: 1.1rem;
+    }
+}
+
+.caption-container {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+#caption {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #333;
+}
+
+.thumbnail-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.thumbnail {
+    width: 80px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 3px solid transparent;
+    transition: border-color 0.3s, transform 0.3s;
+}
+
+.thumbnail:hover {
+    transform: scale(1.1);
+}
+
+.thumbnail.active {
+    border-color: #007bff;
 }
 
 .controls {
-    margin-top: 10px;
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
 
 .control-btn {
-    background-color: #ffd700;
-    color: #fff;
     border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 16px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-size: 1.5rem;
     cursor: pointer;
-    margin: 5px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.control-btn:hover {
-    background-color: #ffcc00;
+.control-btn.play {
+    background-color: #28a745;
+    color: white;
 }
+
+.control-btn.play:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+.control-btn.stop {
+    background-color: #dc3545;
+    color: white;
+}
+
+.control-btn.stop:hover {
+    background-color: #c82333;
+    transform: scale(1.05);
+}
+
