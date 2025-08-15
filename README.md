@@ -1,63 +1,63 @@
-# معرض صور احترافي (Advanced Image Slider)
+# Advanced Image Slider
 
-مشروع واجهة أمامية بسيط واحترافي لعرض الصور داخل Slider متجاوب مع ميزات تفاعلية متكاملة.
+A simple, modern, and responsive image slider with a polished UI and rich interactions.
 
-## المميزات
-- أيقونات احترافية للأزرار باستخدام Font Awesome (CDN).
-- أزرار تنقل يسار/يمين مع حجم صغير وشكل دائري أنيق.
-- تشغيل تلقائي (Play/Pause) مع إمكانية الإيقاف والرجوع لأول صورة.
-- صور مصغرة (Thumbnails) للتنقل السريع مع تمييز الصورة النشطة.
-- عنوان الصورة (Caption) يُعرض أسفل المعرض ويتم تحديثه تلقائيًا من نص `alt` للصورة.
-- الصور تملأ حاوية الـ slider بالكامل مع `object-fit: cover` لمظهر متناسق.
-- تصميم عصري مع تأثيرات حركة لطيفة (Hover/Transition).
-- متجاوب مع الشاشات الصغيرة (Media Queries) ويعيد ضبط العرض عند تغيير حجم النافذة.
+## Features
+- Professional button icons using Font Awesome (via CDN).
+- Left/right navigation buttons with compact circular style.
+- Auto-play toggle (Play/Pause) and a Stop button that resets to the first slide.
+- Thumbnails bar for quick navigation with an active highlight.
+- Dynamic caption displayed under the slider using each image `alt` text.
+- Images fill the slider container using `object-fit: cover` for a consistent look.
+- Smooth hover/transitions and a clean, modern theme.
+- Responsive layout with resize handling for all screen sizes.
 
-## بنية المشروع
+## Project Structure
 ```
 .
-├─ main.html       # صفحة المعرض الرئيسية
-├─ main.css        # التنسيقات والتصميم (تصميم الحاوية، الأزرار، الصور، المصغرات...)
-├─ main.js         # منطق السلايدر (تنقل، تشغيل تلقائي، إنشاء المصغرات، التسمية التوضيحية)
-└─ images/         # مجلد الصور (download.jpg, download2.jpg, download3.jpg)
+├─ main.html       # Main gallery page
+├─ main.css        # Styles (container, buttons, images, thumbnails, responsive)
+├─ main.js         # Slider logic (navigation, autoplay, thumbnails, captions)
+└─ images/         # Images (download.jpg, download2.jpg, download3.jpg)
 ```
 
-## طريقة التشغيل
-1. افتح الملف `main.html` مباشرة في المتصفح.
-2. تأكد من اتصال الإنترنت لعرض أيقونات Font Awesome (CDN).
+## Getting Started
+1. Open `main.html` directly in your browser.
+2. Ensure you have an internet connection to load Font Awesome icons (CDN).
 
-> لا توجد خطوات بناء أو تثبيت؛ المشروع static بالكامل.
+> No build or install steps required; this is a static project.
 
-## كيفية الاستخدام والإضافة
-- إضافة صورة جديدة:
-  1) أضف ملف الصورة داخل مجلد `images/`.
-  2) أضف داخل `main.html` عنصرًا جديدًا كالتالي ضمن `.slides`:
+## Usage & Customization
+- Add a new image:
+  1) Place your image file under the `images/` folder.
+  2) Add a new slide inside `.slides` in `main.html`:
      ```html
      <div class="slide-item">
-       <img src="images/your-image.jpg" alt="وصف الصورة" class="slider-image">
+       <img src="images/your-image.jpg" alt="Image description" class="slider-image">
      </div>
      ```
-  3) تأكد من كتابة `alt` مناسب؛ سيُستخدم كعنوان للصورة في الـ caption.
-  4) لا حاجة لتعديل `main.js`؛ المصغرات تُنشأ تلقائيًا اعتمادًا على العناصر ذات الفئة `slider-image`.
+  3) Provide a meaningful `alt` text; it's used as the slide caption.
+  4) No changes needed in `main.js`; thumbnails are created automatically for `.slider-image` items.
 
-- تخصيص الألوان والأحجام (من `main.css`):
-  - ارتفاع السلايدر: `.slider { height: 520px; max-height: 70vh; }`
-  - جعل الصورة تملأ الحاوية: `.slider img { height: 100%; object-fit: cover; }`
-  - حجم أزرار التنقل: `.nav-btn { width/height/font-size }`
-  - ألوان أزرار التشغيل/الإيقاف: `.control-btn.play/.stop`
+- Tweak colors and sizes (in `main.css`):
+  - Slider height: `.slider { height: 520px; max-height: 70vh; }`
+  - Make the image fill the container: `.slider img { height: 100%; object-fit: cover; }`
+  - Navigation button size: `.nav-btn { width/height/font-size }`
+  - Play/Stop button colors: `.control-btn.play/.stop`
 
-- ضبط سرعة التشغيل التلقائي (من `main.js`):
-  - عدّل قيمة الفاصل الزمني في: `setInterval(nextSlide, 2000)` (الرقم بالمللي ثانية).
+- Change autoplay speed (in `main.js`):
+  - Update the interval: `setInterval(nextSlide, 2000)` (milliseconds).
 
-## نصائح للوصولية (Accessibility)
-- اكتب `alt` واضحًا لكل صورة؛ يظهر كنص وصفي في الـ caption ويُفيد قارئات الشاشة.
+## Accessibility Tips
+- Set clear `alt` text for every image; it's shown in the caption and helps screen readers.
 
-## استكشاف الأخطاء الشائعة
-- الأيقونات لا تظهر: تأكد من اتصال الإنترنت لأن Font Awesome محمّل عبر CDN.
-- المصغرات لا تظهر: تحقق أن الصور داخل `.slides` تحمل الفئة `slider-image` وأن المسار صحيح.
-- الانزلاق غير صحيح بعد تغيير حجم النافذة: يوجد مستمع `resize` يعيد الضبط تلقائيًا؛ جرّب تحديث الصفحة إن لزم.
+## Troubleshooting
+- Icons not showing: Check your internet connection (Font Awesome is loaded via CDN).
+- Thumbnails missing: Ensure images inside `.slides` have the `slider-image` class and valid paths.
+- Slide offset after resizing: There's a `resize` listener that recalculates positions; reload if needed.
 
-## ملاحظات تقنية
-- لا يعتمد المشروع على أي أدوات بناء أو حزم خارجية (باستثناء CDN للأيقونات).
-- الكود منظم وبسيط ليسهل التخصيص والإضافة.
+## Technical Notes
+- No build tools or external packages required (except Font Awesome via CDN).
+- Code is kept simple and organized for easy customization.
 
-استمتع باستخدام المعرض! وإذا تحب إضافة مزايا مثل وضع ملء الشاشة أو الانتقال بالكيبورد، أخبرنا لنضيفها بسهولة.
+Enjoy the gallery! Want fullscreen mode or keyboard navigation? Open an issue or add a feature request and we’ll extend it.
